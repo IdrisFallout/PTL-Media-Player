@@ -10,7 +10,7 @@
 
 # ScreenShots
 
-![(screenshots/main-UI.PNG?raw=true "Optional Title")](screenshots/add-song.gif?raw=true "Optional Title")
+![AddSong...](screenshots/main-UI.PNG?raw=true "Optional Title")
 
 
 
