@@ -26,7 +26,7 @@
 - Loop One Button
 - Loop Off Button
 > **Note** 
-> All the loop button, toggles between the three loop options
+> The loop button, toggles between the three loop options
 
 ![Controls...](screenshots/controls.PNG?raw=true "Optional Title")
 
