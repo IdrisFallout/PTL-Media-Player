@@ -557,16 +557,17 @@ def delete_song():
         # print(play.isSongPlaying)
         if (current_playing_song[0] == location[strip_result.index(playlist_box.get(ACTIVE))]) and (play.isSongPlaying == 1):
             return
-        if add_song.counter == 1:
-            displaySongName("no song playing")
-            total_timer.configure(text="00:00")
-            # return
         selected_song = strip_result.index(playlist_box.get(ACTIVE))
         # print(selected_song)
         playlist_box.delete(selected_song)
         strip_result.pop(selected_song)
         location.pop(selected_song)
         add_song.counter -= 1
+        if add_song.counter < 1:
+            displaySongName("no song playing")
+            total_timer.configure(text="00:00")
+            # return
+        # print(add_song.counter)
         # print(strip_result)
         # print(location)
     except:
