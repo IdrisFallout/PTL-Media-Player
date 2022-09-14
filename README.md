@@ -9,8 +9,37 @@
 > All libraries used are in [requirements][libraries]
 
 # ScreenShots
+## The main UI
 
+![UI...](screenshots/main-UI.PNG?raw=true "Optional Title")
 
+## The controls
+### The application comes with various controls for:
+- A delete button to delete songs from your playlist
+- Previous Button
+- Next Button
+- Play Button
+- Stop Button
+- Pause Button
+- A Volume Button
+- A Loop all button
+- Loop One Button
+- Loop Off Button
+> **Note** 
+> The loop button, toggles between the three loop options
 
+![Controls...](screenshots/controls.PNG?raw=true "Optional Title")
+
+## Adding a song
+
+![AddSong...](screenshots/add-song.gif?raw=true "Optional Title")
+
+## Miscellaneous Features
+### PTL Media Player also has support for Network Streams
+
+![Stream...](screenshots/controls.PNG?raw=true "Optional Title")
+
+## Next Feature in mind
+### Intergrating the Spotify API with PTL Media Player
 
 [libraries]: requirements.txt
