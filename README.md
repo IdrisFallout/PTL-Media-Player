@@ -32,7 +32,7 @@
 
 ## Adding a song
 
-![AddSong...](screenshots/add-song.gif?raw=true "Optional Title")
+![AddSong...](screenshots/add-song.PNG?raw=true "Optional Title")
 
 ## Miscellaneous Features
 ### PTL Media Player also has support for Network Streams
