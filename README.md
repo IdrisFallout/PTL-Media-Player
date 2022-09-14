@@ -11,8 +11,11 @@
 # ScreenShots
 ## The main UI
 
-![AddSong...](screenshots/main-UI.PNG?raw=true "Optional Title")
+![UI...](screenshots/main-UI.PNG?raw=true "Optional Title")
 
+## The controls
+
+![Controls...](screenshots/controls.PNG?raw=true "Optional Title")
 
 
 
