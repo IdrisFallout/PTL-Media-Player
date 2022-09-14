@@ -14,6 +14,19 @@
 ![UI...](screenshots/main-UI.PNG?raw=true "Optional Title")
 
 ## The controls
+### The application comes with various controls for:
+- A delete button to delete songs from your playlist
+- Previous Button
+- Next Button
+- Play Button
+- Stop Button
+- Pause Button
+- A Volume Button
+- A Loop all button
+- Loop One Button
+- Loop Off Button
+> **Note** 
+> All the loop button, toggles between the three loop options
 
 ![Controls...](screenshots/controls.PNG?raw=true "Optional Title")
 
