@@ -35,7 +35,9 @@
 ![AddSong...](screenshots/add-song.gif?raw=true "Optional Title")
 
 ## Miscellaneous Features
-### - PTL Media Player also has support for 
+### PTL Media Player also has support for Network Streams
+
+![Stream...](screenshots/controls.PNG?raw=true "Optional Title")
 
 ## Next Feature in mind
 ### Intergrating the Spotify API with PTL Media Player
