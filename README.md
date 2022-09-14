@@ -9,6 +9,7 @@
 > All libraries used are in [requirements][libraries]
 
 # ScreenShots
+-- The main UI
 
 ![AddSong...](screenshots/main-UI.PNG?raw=true "Optional Title")
 
