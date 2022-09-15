@@ -211,6 +211,7 @@ def update_timer(duration):
                 player_bar['value'] = (update_timer.elapsed_time * 100) / update_timer.duration
                 w = convert_to_standard_time(update_timer.elapsed_time)
                 # print(pygame.mixer.music.get_pos())
+                move_marquee()
                 if int(w.split(":")[-1]) < 10:
                     w = f'{w.split(":")[0:-1][0]}:0{w.split(":")[-1]}'
                     timer.configure(text=f'{w}')
@@ -297,7 +298,7 @@ update_timer.duration = 0
 
 def stop():
     try:
-
+        marquee_frame.place(relx=0.5, rely=0.72, anchor="center")
         # update_timer.elapsed_time = update_timer.duration + 10
         pause_btn.grid_remove()
         play_btn.grid(row=0, column=2, padx=10)
@@ -464,6 +465,37 @@ def displaySongName(song_name):
     marquee_label.configure(text=song_name)
 
 
+def move_marquee():
+    position_x = float(marquee_frame.place_info().get("relx"))
+    frame_width = int(marquee_frame.winfo_width())
+    # print(position_x)
+    # print(frame_width, "Screen: ", width, "X: ", position_x)
+    # print(position_x + frame_width)
+    new_frame_width = transform_range(old_value=frame_width, old_min=0, old_max=width, new_min=0, new_max=1)
+    new_starting_x = transform_range(old_value=starting_x, old_min=0, old_max=1, new_min=0, new_max=width)
+    if frame_width > width:
+        new_position_x = transform_range(old_value=position_x, old_min=0, old_max=1, new_min=0, new_max=width)
+        # print(new_position_x + frame_width, " WIDTH: ", width)
+        # print(new_position_x)
+        # marquee_frame.place_configure(x=position_x - 5)
+        # print(new_frame_width)
+        marquee_frame.place_configure(relx=position_x - 0.01, rely=0.72, anchor="center")
+        # print(float(marquee_frame.place_info().get("relx")))
+        # if position_x + frame_width <= width:
+        overflow = frame_width - width
+        travel = width + (overflow/2)
+        # print(f'traveled: {travel}')
+        # print(f'pos: {new_position_x}  travel to: {travel}')
+        # print(overflow)
+        # print(f'AT: {new_starting_x + new_position_x}  TO: {travel}')
+        if new_starting_x + new_position_x + width <= travel:
+            marquee_frame.place_configure(relx=1+(new_frame_width/2), rely=0.72, anchor="center")
+
+
+def transform_range(old_value=None, old_min=None, old_max=None, new_max=None, new_min=None):
+    return ((old_value - old_min) / (old_max - old_min)) * (new_max - new_min) + new_min
+
+
 def previous_song():
     # print("previous song")
     # print(playlist_box.get(ACTIVE))
@@ -555,7 +587,8 @@ def delete_song():
         # print(add_song.counter)
         # print("deleting a song")
         # print(play.isSongPlaying)
-        if (current_playing_song[0] == location[strip_result.index(playlist_box.get(ACTIVE))]) and (play.isSongPlaying == 1):
+        if (current_playing_song[0] == location[strip_result.index(playlist_box.get(ACTIVE))]) and (
+                play.isSongPlaying == 1):
             return
         selected_song = strip_result.index(playlist_box.get(ACTIVE))
         # print(selected_song)
@@ -647,8 +680,11 @@ playlist_box.pack(pady=20)
 # create Marquee
 marquee_frame = Canvas(root, background=matrix_green, width=200, height=200, bg='red')
 # marquee_frame.pack()
-marquee_frame.pack(anchor="ce")
-marquee_frame.pack_propagate(0)
+# marquee_frame.pack(anchor="ce")
+# marquee_frame.pack_propagate(0)
+marquee_frame.place(relx=0.5, rely=0.72, anchor="center")
+# x=width/2, y=height - 115, anchor="center"
+starting_x = float(marquee_frame.place_info().get("relx"))
 
 marquee_label = Label(marquee_frame, text="No song playing", font=font2, pady=20)
 marquee_label.grid(column=1, row=1, sticky="nesw")
@@ -669,7 +705,8 @@ mute_img = PhotoImage(file='images/mute.png')
 delete_img = PhotoImage(file='images/delete.png')
 
 controls_frame = Frame(root)
-controls_frame.pack()
+# controls_frame.pack()
+controls_frame.place(x=width / 2 - 177, y=height - 84)
 
 vol_container = Frame(root)
 vol_container.place(x=width - 145, y=height - 84)
@@ -711,7 +748,7 @@ forward_btn.grid(row=0, column=3, padx=10)
 loop_btn.grid(row=0, column=4, padx=10)
 volume_max.grid(row=0, column=0)
 
-delete_btn.place(x=50, y=height - 83)
+delete_btn.place(x=50, y=height - 84)
 
 # create the menu
 my_menu = Menu(root)
