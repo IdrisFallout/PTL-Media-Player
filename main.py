@@ -206,7 +206,7 @@ def update_timer(duration):
         if t1.is_alive():
             while update_timer.elapsed_time < update_timer.duration and not (update_timer.elapsed_time < 0):
                 time.sleep(1 / 2)
-                update_timer.elapsed_time = pygame.mixer.music.get_pos() / 1000
+                update_timer.elapsed_time = (pygame.mixer.music.get_pos() + music_progress_bar.the_time) / 1000
                 # print(update_timer.elapsed_time)
                 player_bar['value'] = (update_timer.elapsed_time * 100) / update_timer.duration
                 w = convert_to_standard_time(update_timer.elapsed_time)
@@ -298,6 +298,7 @@ update_timer.duration = 0
 
 def stop():
     try:
+        music_progress_bar.the_time = 0
         marquee_frame.place(relx=0.5, rely=0.72, anchor="center")
         # update_timer.elapsed_time = update_timer.duration + 10
         pause_btn.grid_remove()
@@ -321,10 +322,12 @@ def stop_completely():
 
 def pause_music(state):
     if state == "paused":
+        pause_music.isPaused = 1
         pygame.mixer.music.pause()
         play_btn.grid_remove()
         pause_btn.grid(row=0, column=2, padx=10)
     else:
+        pause_music.isPaused = 0
         pause_btn.grid_remove()
         play_btn.grid(row=0, column=2, padx=10)
         pygame.mixer.music.unpause()
@@ -412,23 +415,21 @@ def update_volume_icon(level):
             volume_max.grid(row=0, column=0)
 
 
-def motion(event):
+def music_progress_bar(event):
     try:
-        player_width = player_bar.winfo_width()
-        max_value = int(player_bar.cget("max"))
-        percent = min(max(event.x / player_width, 0), max_value)
-        value = percent * max_value
-        # # var.set(value)
-        # # print(update_timer.duration)
-        # new_frame = (update_timer.duration * value) / 100
-        # # print(pygame.mixer.music.get_pos())
-        # print(new_frame)
-        # pygame.mixer.music.set_pos(new_frame)
-        # print(pygame.mixer.music.get_pos())
-        # print(update_timer.duration * 1000)
-        # pygame.mixer.music.set_pos(update_timer.duration)
-
-
+        if play.isSongPlaying == 1 and pause_music.isPaused == 0:
+            player_width = player_bar.winfo_width()
+            max_value = int(player_bar.cget("max"))
+            percent = min(max(event.x / player_width, 0), max_value)
+            value = percent * max_value
+            # print(value)
+            # print(update_timer.duration * (value / 100))
+            # pygame.mixer.music.set_pos(update_timer.duration * (value / 100))
+            pygame.mixer.music.play(0, update_timer.duration * (value / 100))
+            # print(f'AT: {update_timer.duration * (value / 100)} TOTAL: {update_timer.duration}')
+            music_progress_bar.the_time = (update_timer.duration * (value / 100) * 1000)
+            # print(pygame.mixer.music.get_pos())
+            # print(pygame.mixer.music.get_pos())
     except:
         pass
 
@@ -664,12 +665,13 @@ max_volume = 100
 current_volume = [max_volume]
 brain = [max_volume, max_volume]
 update_volume_icon.toggle = 0
-motion.the_time = pygame.mixer.music.get_pos() / 1000
+music_progress_bar.the_time = 0
 play.song_number = 0
 loop_many.state = "OFF"
 current_playing_song = [0]
 stop.stopper = 0
 play.isSongPlaying = 0
+pause_music.isPaused = 0
 
 # playlist-box #fg = B4BAA3
 playlist_box = Listbox(root, bg="#2B2B2B", fg=matrix_green, width=60, selectbackground='#3C3F41',
@@ -773,7 +775,7 @@ s.theme_use("default")
 s.configure("TProgressbar", thickness=2, troughcolor='#2B2B2B', background='#0C8CE9')
 player_bar = ttk.Progressbar(root, orient=HORIZONTAL, length=width - 200, mode="determinate", style="TProgressbar")
 # bind a single click(on click) to the playerBar
-player_bar.bind('<Button-1>', motion)
+player_bar.bind('<Button-1>', music_progress_bar)
 player_bar.place(x=100, y=height - 162)
 
 if __name__ == "__main__":
