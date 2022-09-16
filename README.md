@@ -39,7 +39,11 @@
 
 ![Stream...](screenshots/stream.PNG?raw=true "Optional Title")
 
+## Build
+### I have included an excecutable file in the [output folder][build] for those windows users
+
 ## Next Feature in mind
 ### Intergrating the Spotify API with PTL Media Player
 
 [libraries]: requirements.txt
+[build]: output/setup.exe
