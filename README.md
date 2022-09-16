@@ -35,16 +35,16 @@
 ![AddSong...](screenshots/add-song.PNG?raw=true "Optional Title")
 
 ## Miscellaneous Features
-### PTL Media Player also has support for Network Streams
+PTL Media Player also has support for Network Streams
 
 ![Stream...](screenshots/stream.PNG?raw=true "Optional Title")
 
 ## Build
-### I have included an excecutable file in the [output folder][build] for those windows users
-### For a direct download link click [here][setup]
+I have included an excecutable file in the [output folder][build] for those windows users
+For a direct download link click [here][setup]
 
 ## Next Feature in mind
-### Intergrating the Spotify API with PTL Media Player
+Intergrating the Spotify API with PTL Media Player
 
 [libraries]: requirements.txt
 [build]: output/setup.exe
