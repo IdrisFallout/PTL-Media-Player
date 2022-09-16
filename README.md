@@ -14,7 +14,7 @@
 ![UI...](screenshots/main-UI.PNG?raw=true "Optional Title")
 
 ## The controls
-### The application comes with various controls for:
+The application comes with various controls for:
 - A delete button to delete songs from your playlist
 - Previous Button
 - Next Button
