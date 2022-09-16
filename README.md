@@ -39,7 +39,13 @@
 
 ![Stream...](screenshots/stream.PNG?raw=true "Optional Title")
 
+## Build
+### I have included an excecutable file in the [output folder][build] for those windows users
+### For a direct download link click [here][setup]
+
 ## Next Feature in mind
 ### Intergrating the Spotify API with PTL Media Player
 
 [libraries]: requirements.txt
+[build]: output/setup.exe
+[setup]: https://github.com/IdrisFallout/PTL-Media-Player/raw/master/output/setup.exe
