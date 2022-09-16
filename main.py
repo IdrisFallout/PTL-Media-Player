@@ -6,8 +6,14 @@ import requests
 import urllib.parse
 from mutagen.mp3 import MP3
 import time
-from moviepy.editor import *
-from tkinter.tix import *
+try:
+    from moviepy.editor import *
+except:
+    pass
+try:
+    from tkinter.tix import *
+except:
+    pass
 import os
 import pygame
 
@@ -17,6 +23,8 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 
 root = Tk()
 root.title("Music Player")
+img = PhotoImage(file=r'images\music.png')
+root.iconphoto(False, img)
 
 width = 650
 height = 420
@@ -728,20 +736,23 @@ volume_min = Button(vol_container, image=volume_min_img, borderwidth=0, command=
 volume_average = Button(vol_container, image=volume_average_img, borderwidth=0, command=handle_volume)
 delete_btn = Button(root, image=delete_img, borderwidth=0, command=delete_song)
 
-tip = Balloon(root)
-tip.bind_widget(delete_btn, balloonmsg="Delete")
-tip.bind_widget(stop_btn, balloonmsg="Stop")
-tip.bind_widget(back_btn, balloonmsg="Previous")
-tip.bind_widget(play_btn, balloonmsg="Play")
-tip.bind_widget(pause_btn, balloonmsg="Pause")
-tip.bind_widget(forward_btn, balloonmsg="Next")
-tip.bind_widget(loop_btn, balloonmsg="Loop Off")
-tip.bind_widget(loop_many_btn, balloonmsg="Loop Many")
-tip.bind_widget(loop_one_btn, balloonmsg="Loop One")
-tip.bind_widget(volume_min, balloonmsg="Volume")
-tip.bind_widget(volume_average, balloonmsg="Volume")
-tip.bind_widget(volume_max, balloonmsg="Volume")
-tip.bind_widget(volume_mute, balloonmsg="Mute")
+try:
+    tip = Balloon(root)
+    tip.bind_widget(delete_btn, balloonmsg="Delete")
+    tip.bind_widget(stop_btn, balloonmsg="Stop")
+    tip.bind_widget(back_btn, balloonmsg="Previous")
+    tip.bind_widget(play_btn, balloonmsg="Play")
+    tip.bind_widget(pause_btn, balloonmsg="Pause")
+    tip.bind_widget(forward_btn, balloonmsg="Next")
+    tip.bind_widget(loop_btn, balloonmsg="Loop Off")
+    tip.bind_widget(loop_many_btn, balloonmsg="Loop Many")
+    tip.bind_widget(loop_one_btn, balloonmsg="Loop One")
+    tip.bind_widget(volume_min, balloonmsg="Volume")
+    tip.bind_widget(volume_average, balloonmsg="Volume")
+    tip.bind_widget(volume_max, balloonmsg="Volume")
+    tip.bind_widget(volume_mute, balloonmsg="Mute")
+except:
+    pass
 
 stop_btn.grid(row=0, column=0, padx=10)
 back_btn.grid(row=0, column=1, padx=10)
