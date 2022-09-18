@@ -46,6 +46,10 @@ For a direct download link click [here][setup]
 ## Next Feature in mind
 Intergrating the Spotify API with PTL Media Player
 
+## Contact
+To contact me click [here][mail]
+
 [libraries]: requirements.txt
 [build]: output/setup.exe
 [setup]: https://github.com/IdrisFallout/PTL-Media-Player/raw/master/output/setup.exe
+[mail]: mailto:waithakasam2017@gmail.com
